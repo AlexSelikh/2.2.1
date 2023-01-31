@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.Query;
 import java.util.List;
 
 @Service
@@ -13,6 +14,15 @@ public class UserServiceImp implements UserService {
 
    @Autowired
    private UserDao userDao;
+
+
+
+   @Transactional
+   @Override
+   public User getUserByCarModelAndSeries(String model, int series) {
+
+      return userDao.getUserByCarModelAndSeries(model,series);
+   }
 
    @Transactional
    @Override
@@ -26,4 +36,6 @@ public class UserServiceImp implements UserService {
       return userDao.listUsers();
    }
 
-}
+   }
+
+
